@@ -1,5 +1,8 @@
 import React from "react";
-
+import j from "../../assets/logo.png";
+import { IoLogoFacebook } from "react-icons/io";
+import { FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import dhu from "../../assets/dhu.png";
 
 import hu from "../../assets/hu.png";
@@ -61,6 +64,123 @@ const Footer = () => {
           />
         </div>
       </div>
+
+      {/* foofter */}
+      <footer className="bg-custom5 text-white w-full h-auto mt-30 px-6 py-10">
+        {/* Tablet and Web: Structured Layout */}
+        <div className="hidden md:flex flex-col md:items-start lg:flex-row lg:justify-between pb-8 relative">
+          {/* Top Row for Tablet */}
+          <div className="w-full flex flex-col md:flex-col md:items-start md:text-left ">
+            {/* Logo and Nav on same line for tablet */}
+            <div className="w-full flex flex-col md:flex-row md:justify-between ">
+              {/* Logo */}
+              <img
+                src={j}
+                alt="Logo"
+                className=" h-[25px] w-[143px] mb-6 md:mb-0" // Removed mx-auto
+              />
+
+              {/* Nav */}
+              <nav className="space-x-6 text-[13px] font-bold font-Manrope  md:text-left">
+                <a href="#" className="hover:text-[#D87D4A]">
+                  HOME
+                </a>
+                <a href="#" className="hover:text-[#D87D4A]">
+                  HEADPHONES
+                </a>
+                <a href="#" className="hover:text-[#D87D4A]">
+                  SPEAKERS
+                </a>
+                <a href="#" className="hover:text-[#D87D4A]">
+                  EARPHONES
+                </a>
+              </nav>
+            </div>
+
+            {/* Paragraph below Logo (Tablet) */}
+            <p className="text-[15px] text-[#474747] font-medium font-Manrope mt-6 md:max-w-2xl">
+              Audiophile is an all-in-one stop to fulfill your audio needs.
+              We're a small team of music lovers and sound specialists who are
+              devoted to helping you get the most out of personal audio. Come
+              and visit our demo facility – we’re open 7 days a week.
+            </p>
+
+            {/* Copyright */}
+
+            <div className="w-full flex justify-between items-center md:mt-12 mt-6 px-0 md:px-4 lg:px-0">
+              {/* Copyright Text */}
+              <p className="text-[15px] text-[#7f7f7f] font-medium font-Manrope">
+                Copyright 2021. All Rights Reserved
+              </p>
+
+              {/* Social Icons */}
+              <div className="flex space-x-6 text-xl lg:-mt-20">
+                <a href="#" className="hover:text-[#D87D4A]">
+                  <IoLogoFacebook />
+                </a>
+                <a href="#" className="hover:text-[#D87D4A]">
+                  <FaTwitter />
+                </a>
+                <a href="#" className="hover:text-[#D87D4A]">
+                  <FaInstagram />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* mobile screen */}
+        <div className="block md:hidden">
+          <footer className="bg-custom5 text-white w-full py-10 px-6 block md:hidden">
+            {/* Logo */}
+            <div className="flex justify-center mb-6">
+              <img src={j} alt="Logo" className="h-6" />
+            </div>
+
+            {/* Nav */}
+            <nav className="flex flex-col items-center space-y-4 font-bold font-Manrope text-[13px]">
+              <a href="#" className="hover:text-[#D87D4A]">
+                HOME
+              </a>
+              <a href="#" className="hover:text-[#D87D4A]">
+                HEADPHONES
+              </a>
+              <a href="#" className="hover:text-[#D87D4A]">
+                SPEAKERS
+              </a>
+              <a href="#" className="hover:text-[#D87D4A]">
+                EARPHONES
+              </a>
+            </nav>
+
+            {/* Description Text */}
+            <p className="text-[15px] text-[#474747] font-medium font-Manrope text-center mt-6">
+              Audiophile is an all-in-one stop to fulfill your audio needs.
+              We're a small team of music lovers and sound specialists who are
+              devoted to helping you get the most out of personal audio. Come
+              and visit our demo facility – we’re open 7 days a week.
+            </p>
+
+            {/* Copyright */}
+            <p className="text-[15px] text-[#7f7f7f] font-medium font-Manrope text-center mt-6">
+              Copyright 2021. All Rights Reserved
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex justify-center space-x-6 text-xl mt-6">
+              <a href="#" className="hover:text-[#D87D4A]">
+                <IoLogoFacebook />
+              </a>
+              <a href="#" className="hover:text-[#D87D4A]">
+                <FaTwitter />
+              </a>
+              <a href="#" className="hover:text-[#D87D4A]">
+                <FaInstagram />
+              </a>
+            </div>
+          </footer>
+        </div>
+      </footer>
     </div>
   );
 };
