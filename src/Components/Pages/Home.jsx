@@ -9,6 +9,7 @@ import r3 from "../../assets/r3.png";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import SeeProductButton from "../SeeProduct";
 import Shop from "../Shop";
+import SubHome from "../SubHome";
 
 const Home = () => {
   return (
@@ -32,7 +33,7 @@ const Home = () => {
               enthusiast.
             </p>
 
-            <SeeProductButton />
+            <SeeProductButton className="bg-primary hover:bg-custom3" />
           </div>
 
           {/* Image Section */}
@@ -59,13 +60,10 @@ const Home = () => {
               made for the passionate music enthusiast.
             </p>
 
-            <button className="w-[160px] h-[48px] font-bold font-Manrope text-[13px] bg-primary text-white hover:bg-custom3 ml-20 mt-6">
-              SEE PRODUCT
-            </button>
+            <SeeProductButton className="bg-primary hover:bg-custom3  ml-20 mt-4" />
           </div>
         </div>
       </div>
-
       {/* sub-hero */}
 
       <div className="bg-[#fafafa] p-35 px-4">
@@ -90,7 +88,7 @@ const Home = () => {
 
           {/* 2nd */}
           <div
-            className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
+            className=" w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
               transform transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg"
           >
             {/* Overlapping image */}
@@ -124,6 +122,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <SubHome />
     </div>
   );
 };
