@@ -6,10 +6,17 @@ import sm from "../assets/assets/home/mobile/sm.jpg";
 import speaker from "../assets/assets/home/desktop/speaker.png";
 import tab from "../assets/assets/home/tablet/tabSpeaker.jpg";
 
+import { useNavigate } from "react-router-dom";
+import data from "./Pages/data.json";
 import SeeProductButton from "./SeeProduct";
 import ear from "../assets/assets/home/desktop/ear.jpg";
 
 const SubHome = () => {
+  const navigate = useNavigate();
+  const zx9Slug = data.find((item) => item.name.includes("ZX9"))?.slug;
+  const zx7Slug = data.find((item) => item.name.includes("ZX7"))?.slug;
+  const yx1Slug = data.find((item) => item.name.includes("YX1"))?.slug;
+
   return (
     <div>
       <div className="relative w-full">
@@ -52,7 +59,10 @@ const SubHome = () => {
                 </span>
               </p>
 
-              <SeeProductButton className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4" />
+              <SeeProductButton
+                onClick={() => navigate(`/product/${zx9Slug}`)}
+                className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4"
+              />
             </div>
           </div>
         </div>
@@ -82,10 +92,16 @@ const SubHome = () => {
               </h1>
 
               {/* Desktop/Tablet Button */}
-              <SeeProductButton className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4 hidden md:block" />
+              <SeeProductButton
+                onClick={() => navigate(`/product/${zx7Slug}`)}
+                className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4 hidden md:block"
+              />
 
               {/* Mobile Button */}
-              <SeeProductButton className="bg-transparent border-2 border-black text-black hover:text-white hover:bg-custom5 mt-4 block md:hidden" />
+              <SeeProductButton
+                onClick={() => navigate(`/product/${zx7Slug}`)}
+                className="bg-transparent border-2 border-black text-black hover:text-white hover:bg-custom5 mt-4 block md:hidden"
+              />
             </div>
           </div>
         </div>
@@ -106,7 +122,10 @@ const SubHome = () => {
                 <h1 className="text-[28px] font-bold font-Manrope text-custom5">
                   YX1 EARPHONES
                 </h1>
-                <SeeProductButton className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4" />
+                <SeeProductButton
+                  onClick={() => navigate(`/product/${yx1Slug}`)}
+                  className="bg-custom5 hover:bg-[#4c4c4c] text-white mt-4"
+                />
               </div>
             </div>
           </div>
@@ -120,7 +139,10 @@ const SubHome = () => {
                   YX1 EARPHONES
                 </h1>
                 <div className="flex justify-center">
-                  <SeeProductButton className="bg-transparent border-2 border-black text-black hover:text-white hover:bg-custom5 mt-4" />
+                  <SeeProductButton
+                    onClick={() => navigate(`/product/${yx1Slug}`)}
+                    className="bg-transparent border-2 border-black text-black hover:text-white hover:bg-custom5 mt-4"
+                  />
                 </div>
               </div>
             </div>

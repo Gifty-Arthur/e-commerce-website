@@ -5,10 +5,13 @@ import SeeProductButton from "../SeeProduct";
 import r1 from "../../assets/r1.png";
 import r2 from "../../assets/r2.png";
 import Shop from "../Shop";
+import { useNavigate } from "react-router-dom";
 
 import r3 from "../../assets/r3.png";
 
 const Earphones = () => {
+  const navigate = useNavigate();
+
   const earphones = data.filter((item) => item.category === "earphones");
 
   return (
@@ -52,58 +55,55 @@ const Earphones = () => {
           </div>
         ))}
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-between mt-30 gap-y-24 md:gap-y-0 ">
-        {/* 1st  */}
-        <div
-          className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
+      <div className="bg-[#fafafa] p-8 px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-y-24 md:gap-y-0">
+          {/* HEADPHONES */}
+          <div
+            className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
               transform transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg"
-        >
-          {/* Overlapping image */}
-          <img
-            src={r1}
-            alt="Headphone"
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
-          />
-          {/* Text and Button */}
-          <p className="font-bold font-Manrope text-custom5 text-[18px]">
-            HEADPHONES
-          </p>
-          <Shop className="mb-2" />
-        </div>
+          >
+            <img
+              src={r1}
+              alt="Headphone"
+              className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
+            />
+            <p className="font-bold font-Manrope text-custom5 text-[18px]">
+              HEADPHONES
+            </p>
+            <Shop className="mb-2" onClick={() => navigate("/headphones")} />
+          </div>
 
-        {/* 2nd */}
-        <div
-          className=" w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
+          {/* SPEAKERS */}
+          <div
+            className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
               transform transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg"
-        >
-          {/* Overlapping image */}
-          <img
-            src={r2}
-            alt="Headphone"
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
-          />
-          {/* Text and Button */}
-          <p className="font-bold font-Manrope text-custom5 text-[18px]">
-            SPEAKERS
-          </p>
-          <Shop className="mb-2" />
-        </div>
-        {/* 3rd */}
-        <div
-          className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
+          >
+            <img
+              src={r2}
+              alt="Speaker"
+              className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
+            />
+            <p className="font-bold font-Manrope text-custom5 text-[18px]">
+              SPEAKERS
+            </p>
+            <Shop className="mb-2" onClick={() => navigate("/speakers")} />
+          </div>
+
+          {/* EARPHONES */}
+          <div
+            className="w-[350px] h-[204px] bg-tertiary rounded-[8px] relative pt-16 flex flex-col items-center justify-end
               transform transition-transform duration-300 hover:scale-105 shadow-md hover:shadow-lg"
-        >
-          {/* Overlapping image */}
-          <img
-            src={r3}
-            alt="Headphone"
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
-          />
-          {/* Text and Button */}
-          <p className="font-bold font-Manrope text-custom5 text-[18px]">
-            EARPHONES
-          </p>
-          <Shop className="mb-2" />
+          >
+            <img
+              src={r3}
+              alt="Earphone"
+              className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-[120px] h-auto"
+            />
+            <p className="font-bold font-Manrope text-custom5 text-[18px]">
+              EARPHONES
+            </p>
+            <Shop className="mb-2" onClick={() => navigate("/earphones")} />
+          </div>
         </div>
       </div>
     </div>

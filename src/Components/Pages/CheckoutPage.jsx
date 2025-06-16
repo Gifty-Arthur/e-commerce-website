@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../CartProvider";
+import CheckoutModal from "../CheckoutModal";
 
 const CheckoutPage = () => {
   const { cartItems } = useCart();
@@ -12,10 +13,12 @@ const CheckoutPage = () => {
     zip: "",
     city: "",
     country: "",
-    eMoneyNum: "",
+    paymentMethod: "e-Money",
+    eMoneyNum: "", // ✅ add this
     eMoneyPin: "",
-    payment: "e-Money",
   });
+
+  const [showModal, setShowModal] = useState(false);
 
   const [errors, setErrors] = useState({});
   const shipping = 50;
@@ -37,8 +40,7 @@ const CheckoutPage = () => {
     if (!form.email || !/^\S+@\S+\.\S+$/.test(form.email)) {
       newErrors.email = "Wrong format";
     }
-
-    if (form.payment === "e-Money") {
+    if (form.paymentMethod === "e-Money") {
       if (!form.eMoneyNum) newErrors.eMoneyNum = "Required";
       if (!form.eMoneyPin) newErrors.eMoneyPin = "Required";
     }
@@ -48,7 +50,8 @@ const CheckoutPage = () => {
   };
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -259,6 +262,32 @@ const CheckoutPage = () => {
                 Cash on Delivery
               </label>
             </div>
+            {form.paymentMethod === "e-Money" && (
+              <>
+                <input
+                  name="eMoneyNum"
+                  placeholder="e-Money Number"
+                  value={form.eMoneyNum}
+                  onChange={handleChange}
+                  className={`border p-3 w-full rounded ${
+                    errors.eMoneyNum
+                      ? "border-[#CD2C2C] focus:outline-none focus:ring-2 focus:ring-[#CD2C2C]"
+                      : "border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  }`}
+                />
+                <input
+                  name="eMoneyPin"
+                  placeholder="e-Money PIN"
+                  value={form.eMoneyPin}
+                  onChange={handleChange}
+                  className={`border p-3 w-full rounded ${
+                    errors.eMoneyPin
+                      ? "border-[#CD2C2C] focus:outline-none focus:ring-2 focus:ring-[#CD2C2C]"
+                      : "border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  }`}
+                />
+              </>
+            )}
 
             {/* Message when Cash on Delivery is selected */}
             {form.paymentMethod === "Cash on Delivery" && (
@@ -322,21 +351,24 @@ const CheckoutPage = () => {
           </div>
         </div>
 
-        <button
-          onClick={() => {
-            if (validate()) {
-              alert("Payment successful!");
-            }
-          }}
-          disabled={Object.keys(errors).length > 0}
-          className={`w-full mt-6 ${
-            Object.keys(errors).length
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-primary hover:bg-custom3"
-          } text-white py-3 uppercase text-sm tracking-wide transition`}
-        >
-          Continue & Pay
-        </button>
+        <div className="relative">
+          {" "}
+          {/* <== This helps position modal over background */}
+          {/* ... your existing form and summary here ... */}
+          <button
+            onClick={() => {
+              const isValid = validate();
+              if (isValid) {
+                setShowModal(true); // <== Show modal if form is valid
+              }
+            }}
+            className="w-full mt-6 bg-primary hover:bg-custom3 text-white py-3 uppercase text-sm tracking-wide transition"
+          >
+            Continue & Pay
+          </button>
+          {/* Show modal if form is valid */}
+          {showModal && <CheckoutModal />}
+        </div>
       </div>
     </div>
   );
