@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useCart } from "../Components/CartProvider";
+import { useNavigate } from "react-router-dom";
 
 const CartPopup = ({ onClose }) => {
+  const navigate = useNavigate();
+
   const { cartItems, clearCart, increaseQty, decreaseQty } = useCart();
 
   const total = cartItems.reduce(
@@ -76,7 +79,13 @@ const CartPopup = ({ onClose }) => {
           </p>
         </div>
 
-        <button className="w-full mt-6 bg-primary hover:bg-custom3 text-white py-3 uppercase text-sm tracking-wide">
+        <button
+          onClick={() => {
+            onClose(); // close popup
+            navigate("/checkout");
+          }}
+          className="w-full mt-6 bg-primary hover:bg-custom3 text-white py-3 uppercase text-sm tracking-wide"
+        >
           Checkout
         </button>
       </div>

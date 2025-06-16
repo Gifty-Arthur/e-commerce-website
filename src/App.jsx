@@ -8,6 +8,8 @@ import Speakers from "./Components/Pages/Speakers";
 import Earphones from "./Components/Pages/Earphones";
 import ProductDetails from "./Components/Details/ProductDetails";
 
+import CheckoutPage from "./Components/Pages/CheckoutPage";
+
 function App() {
   return (
     <div>
@@ -20,6 +22,7 @@ function App() {
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/earphones" element={<Earphones />} />
           <Route path="/product/:slug" element={<ProductDetails />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </main>
       <Footer />
