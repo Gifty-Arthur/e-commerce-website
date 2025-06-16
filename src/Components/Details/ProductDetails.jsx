@@ -1,15 +1,30 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import data from "../Pages/data.json";
+
+import { useCart } from "../CartProvider";
 
 const ProductDetails = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
   const product = data.find((item) => item.slug === slug);
 
   if (!product) return <div className="p-10">Product not found</div>;
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 space-y-20">
+      {/* Go Back Button */}
+      <div className="mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-gray-500 hover:text-orange-500 font-medium uppercase tracking-wide"
+        >
+          Go Back
+        </button>
+      </div>
+
       {/* Product Overview */}
       <div className="flex flex-col lg:flex-row items-center gap-12">
         <img
@@ -26,7 +41,10 @@ const ProductDetails = () => {
           <h2 className="text-3xl font-bold uppercase">{product.name}</h2>
           <p className="text-gray-600">{product.description}</p>
           <p className="font-bold text-xl">${product.price.toLocaleString()}</p>
-          <button className="mt-2 px-6 py-3 bg-orange-500 text-white uppercase tracking-wide hover:bg-orange-600 transition">
+          <button
+            onClick={() => addToCart(product)}
+            className="mt-2 px-6 py-3  text-white uppercase tracking-wide bg-primary hover:bg-custom3 transition"
+          >
             Add to Cart
           </button>
         </div>
@@ -56,22 +74,30 @@ const ProductDetails = () => {
       </div>
 
       {/* Gallery */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <img
-          src={product.gallery.first.desktop.replace("./", "/")}
-          alt="Gallery 1"
-          className="w-full rounded-md"
-        />
-        <img
-          src={product.gallery.second.desktop.replace("./", "/")}
-          alt="Gallery 2"
-          className="w-full rounded-md"
-        />
-        <img
-          src={product.gallery.third.desktop.replace("./", "/")}
-          alt="Gallery 3"
-          className="w-full rounded-md md:col-span-2 lg:col-span-1"
-        />
+
+      <div className="flex flex-col lg:flex-row md:flex-row gap-6 mt-20">
+        {/* Left column with 2 stacked images */}
+        <div className="flex flex-col gap-6 ">
+          <img
+            src={product.gallery.first.desktop.replace("./", "/")}
+            alt="Gallery 1"
+            className="w-full h-auto rounded-md object-cover"
+          />
+          <img
+            src={product.gallery.second.desktop.replace("./", "/")}
+            alt="Gallery 2"
+            className="w-full h-auto rounded-md object-cover"
+          />
+        </div>
+
+        {/* Right column with one large image */}
+        <div className="w-full md:w-1/2">
+          <img
+            src={product.gallery.third.desktop.replace("./", "/")}
+            alt="Gallery 3"
+            className="w-full h-full rounded-md object-cover"
+          />
+        </div>
       </div>
 
       {/* You May Also Like */}
@@ -86,12 +112,12 @@ const ProductDetails = () => {
                 className="w-full rounded"
               />
               <h4 className="text-lg font-bold uppercase">{other.name}</h4>
-              <a
-                href={`/product/${other.slug}`}
-                className="inline-block mt-2 px-6 py-3 bg-orange-500 text-white uppercase tracking-wide hover:bg-orange-600 transition"
+              <button
+                onClick={() => navigate(`/product/${other.slug}`)}
+                className="mt-2 px-6 py-3 bg-primary hover:bg-custom3  text-white uppercase tracking-wide  transition"
               >
                 See Product
-              </a>
+              </button>
             </div>
           ))}
         </div>
