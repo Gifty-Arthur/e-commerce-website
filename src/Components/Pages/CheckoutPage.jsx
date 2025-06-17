@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCart } from "../CartProvider";
 import CheckoutModal from "../CheckoutModal";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { cartItems } = useCart();
@@ -53,11 +54,21 @@ const CheckoutPage = () => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
+  const navigate = useNavigate();
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-10">
+      {/* Go Back Button */}
+      <div className="mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="text-gray-500 hover:text-orange-500 font-medium uppercase tracking-wide"
+        >
+          Go Back
+        </button>
+      </div>
       {/* Left Form Section */}
-      <div className="flex-1 space-y-10">
+      <div className="flex-1 space-y-10 mt-10">
         <h2 className="text-2xl font-bold uppercase">Checkout</h2>
 
         {/* Billing Details */}
@@ -76,7 +87,7 @@ const CheckoutPage = () => {
               </label>
               <input
                 name="name"
-                placeholder="Name"
+                placeholder="Alexei Ward"
                 value={form.name}
                 onChange={handleChange}
                 className={`p-3 w-full rounded border bg-white text-black placeholder:text-gray-400
@@ -99,7 +110,7 @@ const CheckoutPage = () => {
               </label>
               <input
                 name="email"
-                placeholder="Email Address"
+                placeholder="alexei@mail.com"
                 value={form.email}
                 onChange={handleChange}
                 className={`p-3 w-full rounded border ${
@@ -123,7 +134,7 @@ const CheckoutPage = () => {
             </label>
             <input
               name="phone"
-              placeholder="Phone Number"
+              placeholder="+1 202-555-0136"
               value={form.phone}
               onChange={handleChange}
               className={`p-3 w-full rounded border md:col-span-2 ${
@@ -150,7 +161,7 @@ const CheckoutPage = () => {
             </label>
             <input
               name="address"
-              placeholder="Address"
+              placeholder="1137 Williams Avenue"
               value={form.address}
               onChange={handleChange}
               className={`border p-3 w-full rounded md:col-span-2 ${
@@ -162,7 +173,7 @@ const CheckoutPage = () => {
             />
             <input
               name="zip"
-              placeholder="ZIP Code"
+              placeholder="10001"
               value={form.zip}
               onChange={handleChange}
               className={`border p-3 w-full rounded ${
@@ -175,7 +186,7 @@ const CheckoutPage = () => {
 
             <input
               name="city"
-              placeholder="City"
+              placeholder="New York"
               value={form.city}
               onChange={handleChange}
               className={`border p-3 w-full rounded ${
@@ -193,7 +204,7 @@ const CheckoutPage = () => {
             </label>
             <input
               name="country"
-              placeholder="Country"
+              placeholder="United States"
               value={form.country}
               onChange={handleChange}
               className={`border p-3 w-full rounded md:col-span-2 ${
