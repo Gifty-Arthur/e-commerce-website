@@ -28,9 +28,8 @@ const SubHome = () => {
           className="w-full h-[600px] block lg:hidden"
         />
 
-        <div className="absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end px-4">
-          {/* For mobile and tablet: stack vertically. For desktop (lg+): side by side */}
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-50 px-4 lg:px-20">
+        <div className="absolute inset-0 flex flex-col lg:flex-row items-center lg:items-end px-4 ">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-50 px-4 lg:px-20 ">
             {/* Speaker Image */}
             <img
               src={speaker}

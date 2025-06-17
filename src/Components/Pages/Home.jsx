@@ -68,14 +68,14 @@ const Home = () => {
           </p>
 
           <SeeProductButton
-            className="bg-primary hover:bg-custom3 mt-4"
+            className="bg-primary hover:bg-custom3 mt-4 text-white"
             onClick={() => navigate("/product/xx99-mark-two-headphones")}
           />
         </div>
       </div>
 
       {/* Sub-Categories */}
-      <div className="bg-[#fafafa] p-8 px-4">
+      <div className="bg-[#fafafa] p-8 px-4 mt-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-y-24 md:gap-y-0">
           {/* HEADPHONES */}
           <div

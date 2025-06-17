@@ -62,7 +62,7 @@ const Headphone = () => {
         ))}
       </div>
 
-      <div className="bg-[#fafafa] p-8 px-4">
+      <div className="bg-[#fafafa] p-8 px-4 mt-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-y-24 md:gap-y-0">
           {/* HEADPHONES */}
           <div
