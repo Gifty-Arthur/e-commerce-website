@@ -300,7 +300,6 @@ const CheckoutPage = () => {
               </>
             )}
 
-            {/* Message when Cash on Delivery is selected */}
             {form.paymentMethod === "Cash on Delivery" && (
               <div className="md:col-span-2 flex gap-4 items-start mt-4">
                 <img
@@ -320,7 +319,6 @@ const CheckoutPage = () => {
         </section>
       </div>
 
-      {/* Right Summary Section */}
       <div className="w-full lg:w-1/3 bg-white shadow p-6 rounded-lg space-y-6">
         <h3 className="text-lg font-bold uppercase">Summary</h3>
         <div className="space-y-4">
@@ -364,20 +362,17 @@ const CheckoutPage = () => {
 
         <div className="relative">
           {" "}
-          {/* <== This helps position modal over background */}
-          {/* ... your existing form and summary here ... */}
           <button
             onClick={() => {
               const isValid = validate();
               if (isValid) {
-                setShowModal(true); // <== Show modal if form is valid
+                setShowModal(true);
               }
             }}
             className="w-full mt-6 bg-primary hover:bg-custom3 text-white py-3 uppercase text-sm tracking-wide transition"
           >
             Continue & Pay
           </button>
-          {/* Show modal if form is valid */}
           {showModal && <CheckoutModal />}
         </div>
       </div>

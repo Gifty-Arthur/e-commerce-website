@@ -12,7 +12,6 @@ import r3 from "../../assets/r3.png";
 const Headphone = () => {
   const navigate = useNavigate();
 
-  // Filter only headphones category
   const headphones = data.filter(
     (product) => product.category === "headphones"
   );
@@ -26,7 +25,6 @@ const Headphone = () => {
         </h1>
       </div>
 
-      {/* Loop through Headphones */}
       <div className="mt-20">
         {[...headphones].reverse().map((item, index) => (
           <div
@@ -35,7 +33,6 @@ const Headphone = () => {
               index % 2 === 1 ? "lg:flex-row-reverse" : ""
             } items-center gap-10 ${index !== 0 ? "mt-20" : ""}`}
           >
-            {/* Product Image (clickable) */}
             <Link to={`/product/${item.slug}`} className="w-full lg:w-1/2">
               <img
                 src={item.image.desktop.replace("./", "/")}

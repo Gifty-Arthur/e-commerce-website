@@ -12,7 +12,6 @@ const CartPopup = ({ onClose }) => {
     0
   );
 
-  // Prevent background scroll when cart is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => (document.body.style.overflow = "auto");
@@ -20,7 +19,6 @@ const CartPopup = ({ onClose }) => {
 
   return (
     <>
-      {/* Overlay */}
       <div onClick={onClose} className="fixed inset-0 bg-black/60 z-40"></div>
       {/* Popup */}
       <div className="fixed top-24 right-6 w-[95%] md:w-[400px] bg-white rounded-lg shadow-lg z-50 p-6 animate-slide-in">
@@ -81,7 +79,7 @@ const CartPopup = ({ onClose }) => {
 
         <button
           onClick={() => {
-            onClose(); // close popup
+            onClose();
             navigate("/checkout");
           }}
           className="w-full mt-6 bg-primary hover:bg-custom3 text-white py-3 uppercase text-sm tracking-wide"

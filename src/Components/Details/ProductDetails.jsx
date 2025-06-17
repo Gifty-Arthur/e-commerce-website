@@ -76,7 +76,6 @@ const ProductDetails = () => {
       {/* Gallery */}
 
       <div className="flex flex-col lg:flex-row md:flex-row gap-6 mt-20">
-        {/* Left column with 2 stacked images */}
         <div className="flex flex-col gap-6 ">
           <img
             src={product.gallery.first.desktop.replace("./", "/")}
@@ -90,7 +89,6 @@ const ProductDetails = () => {
           />
         </div>
 
-        {/* Right column with one large image */}
         <div className="w-full md:w-1/2">
           <img
             src={product.gallery.third.desktop.replace("./", "/")}

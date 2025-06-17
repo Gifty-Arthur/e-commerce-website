@@ -13,7 +13,6 @@ const Navbar = () => {
   return (
     <div className="w-full bg-[#0E0E0E]">
       <div className="flex items-center justify-between px-4 py-4 border-b border-[#979797] relative">
-        {/* Logo + Hamburger */}
         <div className="flex items-center space-x-4">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
