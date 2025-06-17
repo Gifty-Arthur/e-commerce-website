@@ -1,4 +1,5 @@
 import "./App.css";
+import ScrollToTop from "./Components/ScrollToTop";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Pages/Navbar";
 import Home from "./Components/Pages/Home";
@@ -7,19 +8,18 @@ import Headphone from "./Components/Pages/Headphone";
 import Speakers from "./Components/Pages/Speakers";
 import Earphones from "./Components/Pages/Earphones";
 import ProductDetails from "./Components/Details/ProductDetails";
-
 import CheckoutPage from "./Components/Pages/CheckoutPage";
 import CheckoutModal from "./Components/CheckoutModal";
 
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/headphones" element={<Headphone />} />
-
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/earphones" element={<Earphones />} />
           <Route path="/product/:slug" element={<ProductDetails />} />
